@@ -1,7 +1,8 @@
 # shadowsocks_windows_extend
 
 ## 基于Shadowsocks for Windows V2.5.8 修改
-===============
+
+
 
 在原shadowsocks for Windows V2.5.8主界面基础上，添加使用测试账号按钮，从 [ishadowsocks] 获取实验账号，改善网络,提升效率。。。
 
@@ -12,3 +13,8 @@
 > * 须使用VS2015打开，低版本的IDE可能不支持，编译后到bin目录下的`Debug/Release`文件夹获取相关文件
 > * 如有侵犯相关人员权益，请联系本人（`zemin_lynn#qq.com`替换@）删除相关资料，谢谢!
 
+
+----------------------
+> Tips:可以到 `http://pan.baidu.com/s/1hspuj4K` 下载，提取密码为`gcm9`，当然啦，自己 `pull` 下来编译也挺方便的  
+
+[ishadowsocks]:			http://www.ishadowsocks.org
