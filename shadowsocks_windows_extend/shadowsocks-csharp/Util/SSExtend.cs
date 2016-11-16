@@ -26,6 +26,11 @@ namespace Shadowsocks.Util
 
                 var targetHtml = GetTargetHTML(result, "<section id=\"free\">", "<!-- Provider list Section -->");
                 result = GetTargetHTML(targetHtml, "<div class=\"row\">", @"</div>");
+                if (result.Contains("更多帐号"))
+                {
+                    targetHtml = targetHtml.Replace(result, string.Empty);
+                    result = GetTargetHTML(targetHtml, "<div class=\"row\">", @"</div>");
+                }
                 HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
                 document.LoadHtml(result);
                 HtmlNode rootNode = document.DocumentNode;
