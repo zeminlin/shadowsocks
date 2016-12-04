@@ -17,5 +17,10 @@
 ----------------------
 > Tips:可以到 `http://pan.baidu.com/s/1hspuj4K` 下载，提取密码为`gcm9`，当然啦，自己 `pull` 下来编译也挺方便的  
 
+<<<<<<< HEAD
 [iVPN]:					http://www.ifanqiang.cn/#free
 [ishadowsocks]:			http://www.ishadowsocks.org
+=======
+[iVPN]:			http://www.ifanqiang.cn/#free
+[ishadowsocks]:			http://www.ishadowsocks.org
+>>>>>>> 1a322ed48422d29c857536612facec2f2f435c9c
