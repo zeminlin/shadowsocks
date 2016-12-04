@@ -55,13 +55,14 @@
             this.ProxyPortTextBox = new System.Windows.Forms.TextBox();
             this.ProxyPortLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnLuckyTest = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnLuckyTest = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.linkLblTarget = new System.Windows.Forms.LinkLabel();
             this.lblDesc = new System.Windows.Forms.Label();
             this.extendListbox = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.linkIFanQiang = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.ServerGroupBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -441,17 +442,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(159, 29);
             this.tableLayoutPanel3.TabIndex = 8;
             // 
-            // btnLuckyTest
-            // 
-            this.btnLuckyTest.AutoSize = true;
-            this.btnLuckyTest.Location = new System.Drawing.Point(10, 219);
-            this.btnLuckyTest.Name = "btnLuckyTest";
-            this.btnLuckyTest.Size = new System.Drawing.Size(108, 29);
-            this.btnLuckyTest.TabIndex = 14;
-            this.btnLuckyTest.Text = "使用测试账号";
-            this.btnLuckyTest.UseVisualStyleBackColor = true;
-            this.btnLuckyTest.Click += new System.EventHandler(this.btnLuckyTest_Click);
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.AutoSize = true;
@@ -470,8 +460,20 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(166, 32);
             this.tableLayoutPanel4.TabIndex = 8;
             // 
+            // btnLuckyTest
+            // 
+            this.btnLuckyTest.AutoSize = true;
+            this.btnLuckyTest.Location = new System.Drawing.Point(10, 238);
+            this.btnLuckyTest.Name = "btnLuckyTest";
+            this.btnLuckyTest.Size = new System.Drawing.Size(108, 29);
+            this.btnLuckyTest.TabIndex = 14;
+            this.btnLuckyTest.Text = "使用测试账号";
+            this.btnLuckyTest.UseVisualStyleBackColor = true;
+            this.btnLuckyTest.Click += new System.EventHandler(this.btnLuckyTest_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.linkIFanQiang);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.linkLblTarget);
             this.groupBox1.Controls.Add(this.btnLuckyTest);
@@ -484,10 +486,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "测试账号说明";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 36);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "测试账号如下，仅\r\n供实验用，请购买\r\n商家账号提升网络：";
+            // 
             // linkLblTarget
             // 
             this.linkLblTarget.AutoSize = true;
-            this.linkLblTarget.Location = new System.Drawing.Point(9, 42);
+            this.linkLblTarget.LinkColor = System.Drawing.Color.Gray;
+            this.linkLblTarget.Location = new System.Drawing.Point(9, 67);
             this.linkLblTarget.Name = "linkLblTarget";
             this.linkLblTarget.Size = new System.Drawing.Size(89, 12);
             this.linkLblTarget.TabIndex = 15;
@@ -508,19 +520,22 @@
             // 
             this.extendListbox.FormattingEnabled = true;
             this.extendListbox.ItemHeight = 12;
-            this.extendListbox.Location = new System.Drawing.Point(10, 131);
+            this.extendListbox.Location = new System.Drawing.Point(10, 150);
             this.extendListbox.Name = "extendListbox";
             this.extendListbox.Size = new System.Drawing.Size(108, 76);
             this.extendListbox.TabIndex = 11;
             // 
-            // label1
+            // linkIFanQiang
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 36);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "测试账号如下，仅\r\n供实验用，请购买\r\n商家账号提升网络：";
+            this.linkIFanQiang.AutoSize = true;
+            this.linkIFanQiang.LinkColor = System.Drawing.Color.Gray;
+            this.linkIFanQiang.Location = new System.Drawing.Point(11, 46);
+            this.linkIFanQiang.Name = "linkIFanQiang";
+            this.linkIFanQiang.Size = new System.Drawing.Size(59, 12);
+            this.linkIFanQiang.TabIndex = 17;
+            this.linkIFanQiang.TabStop = true;
+            this.linkIFanQiang.Text = "ifanqiang";
+            this.linkIFanQiang.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkIFanQiang_LinkClicked);
             // 
             // ConfigForm
             // 
@@ -598,6 +613,7 @@
         private System.Windows.Forms.Label lblDesc;
         private System.Windows.Forms.LinkLabel linkLblTarget;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkIFanQiang;
     }
 }
 

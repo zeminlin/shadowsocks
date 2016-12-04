@@ -223,6 +223,8 @@ namespace Shadowsocks.View
                 }),
                 CreateMenuItem("About...", new EventHandler(this.AboutItem_Click)),
                 new MenuItem("-"),
+                CreateMenuItem("更新测试账号...", new EventHandler(this.Refresh_Click)),
+                new MenuItem("-"),
                 CreateMenuItem("Quit", new EventHandler(this.Quit_Click))
             });
         }
@@ -418,6 +420,18 @@ namespace Shadowsocks.View
         private void Config_Click(object sender, EventArgs e)
         {
             ShowConfigForm();
+        }
+
+        /// <summary>
+        /// 更新测试账号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+            controller.Stop();
+            new ConfigForm(controller).btnLuckyTest_Click(sender, e);
+            controller.Start();
         }
 
         private void Quit_Click(object sender, EventArgs e)

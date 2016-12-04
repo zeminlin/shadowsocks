@@ -5,12 +5,18 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Shadowsocks.Util
 {
     public class SSExtend
     {
-        public List<SSItem> LoadSSAccountList(string url)
+        /// <summary>
+        /// 加载ISS测试账号
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public List<SSItem> LoadISSAccountList(string url)
         {
             string result;
             List<SSItem> list = new List<SSItem>();
@@ -71,6 +77,54 @@ namespace Shadowsocks.Util
             return list;
         }
 
+        /// <summary>
+        /// 加载IFanQiang测试账号
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public List<SSItem> LoadIFanQiangAccountList(string url)
+        {
+            string jsonStr;
+            List<SSItem> list = new List<SSItem>();
+            try
+            {
+                WebRequest request = WebRequest.Create(url.Trim());
+                WebResponse response = request.GetResponse();
+                Stream stream = response.GetResponseStream();
+                StreamReader sReader = new StreamReader(stream, Encoding.UTF8);
+                jsonStr = sReader.ReadToEnd();
+                sReader.Close();
+                stream.Close();
+
+                jsonStr = jsonStr.TrimStart('[').TrimEnd(']');
+                jsonStr = jsonStr.Replace("},{", "}@{");
+                string[] jsonArray = jsonStr.Split('@');
+                List<Model> modelList = new List<Model>();
+                foreach (var json in jsonArray)
+                {
+                    var jsonModel = JsonConvert.DeserializeObject<Model>(json);
+                    if (jsonModel.st)
+                    {
+                        SSItem ssItem = new SSItem()
+                        {
+                            Server = jsonModel.i,
+                            Port = jsonModel.p,
+                            Password = jsonModel.pw,
+                            EncryptType = jsonModel.m,
+                            ServerState = jsonModel.l,
+                            Notes = string.Format("{0}_来源于ifq", jsonModel.r)
+                        };
+                        list.Add(ssItem);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                WriteTxtLog(e.Message);
+            }
+            return list;
+        }
+
         private string GetTargetHTML(string input, string startStr, string endStr)
         {
             var result = string.Empty;
@@ -115,5 +169,20 @@ namespace Shadowsocks.Util
         public string EncryptType { get; set; }
         public string ServerState { get; set; }
         public string Notes { get; set; }
+    }
+
+    /// <summary>
+    /// ifaniang 对象
+    /// http://api.ifanqiang.cn/ajax.php?verify=true&mod=getfreess&t=1479829563648
+    /// </summary>
+    public class Model
+    {
+        public string i { get; set; }
+        public string p { get; set; }
+        public string m { get; set; }
+        public string pw { get; set; }
+        public string r { get; set; }
+        public string l { get; set; }
+        public bool st { get; set; }
     }
 }

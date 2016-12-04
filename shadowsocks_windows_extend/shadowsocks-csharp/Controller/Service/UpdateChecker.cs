@@ -57,7 +57,7 @@ namespace Shadowsocks.Controller
         {
             this.config = config;
 
-            try
+            /*try
             {
                 Logging.Debug("Checking updates...");
                 WebClient http = CreateWebClient();
@@ -67,7 +67,7 @@ namespace Shadowsocks.Controller
             catch (Exception ex)
             {
                 Logging.LogUsefulException(ex);
-            }
+            }*/
         }
 
         private void http_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -216,7 +216,7 @@ namespace Shadowsocks.Controller
 
             public static int CompareVersion(string l, string r)
             {
-                var ls = l.Split('.');
+                /*var ls = l.Split('.');
                 var rs = r.Split('.');
                 for (int i = 0; i < Math.Max(ls.Length, rs.Length); i++)
                 {
@@ -226,7 +226,7 @@ namespace Shadowsocks.Controller
                     {
                         return lp - rp;
                     }
-                }
+                }*/
                 return 0;
             }
         }

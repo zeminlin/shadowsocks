@@ -340,15 +340,21 @@ namespace Shadowsocks.View
             }
         }
         
-        private void btnLuckyTest_Click(object sender, EventArgs e)
+        public void btnLuckyTest_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
-            string url = "http://www.ishadowsocks.org/";
-            List<SSItem> accounts = new SSExtend().LoadSSAccountList(url);
+            string issUrl = "http://www.ishadowsocks.org/";
+            //  http://api.ifanqiang.cn/ajax.php?verify=true&mod=getfreess&t=1479829563648
+            var iFanQiangUrl = "http://api.ifanqiang.cn/ajax.php?verify=true&mod=getfreess&t=14798295636" + new Random().Next(10,99);
+            var ssObj = new SSExtend();
+
+            List<SSItem> accounts = ssObj.LoadIFanQiangAccountList(iFanQiangUrl);
+            accounts.AddRange(ssObj.LoadISSAccountList(issUrl));
 
             if (accounts.Count == 0)
             {
                 MessageBox.Show("网络连接错误或获取测试账号失败, 请联系维护人员！");
+                this.Enabled = true;
                 return;
             }
 
@@ -387,6 +393,11 @@ namespace Shadowsocks.View
         private void linkLblTarget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://www.ishadowsocks.org");
+        }
+
+        private void linkIFanQiang_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.ifanqiang.cn/");
         }
     }
 }
