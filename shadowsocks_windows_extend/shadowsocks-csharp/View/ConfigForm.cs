@@ -372,7 +372,8 @@ namespace Shadowsocks.View
             }
 
             // clear empty servers
-            _modifiedConfiguration.configs.RemoveAll(x => string.IsNullOrEmpty(x.server) || x.remarks.Contains("更换"));
+            _modifiedConfiguration.configs.RemoveAll(x => string.IsNullOrEmpty(x.server) || string.IsNullOrEmpty(x.password)
+            || x.remarks.EndsWith("来源于ifq") || x.remarks.Contains("更换"));
 
             _modifiedConfiguration.configs.InsertRange(0, httpServers); //Add to head of the list
             controller.SaveServers(_modifiedConfiguration.configs, _modifiedConfiguration.localPort);
